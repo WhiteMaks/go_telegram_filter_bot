@@ -11,10 +11,16 @@ import (
 )
 
 func main() {
+	if len(os.Args) < 2 {
+		log.Fatal("Ошибка: не передан токен бота. Используйте: ./bot YOUR_BOT_TOKEN")
+	}
+
+	token := os.Args[1]
+
 	forbiddenWords := readForbiddenWords()
 
 	botConfig := config.Config{
-		Token:          "",
+		Token:          token,
 		ForbiddenWords: forbiddenWords,
 	}
 
